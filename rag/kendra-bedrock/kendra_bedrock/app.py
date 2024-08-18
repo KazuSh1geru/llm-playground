@@ -5,7 +5,7 @@ import boto3
 bedrock_client = boto3.client("bedrock-runtime")
 kendra_client = boto3.client("kendra")
 
-model_id = "cohere.command-r-plus-v1:0"
+MODEL_ID = "cohere.command-r-plus-v1:0"
 
 
 def generate_search_query(question: str) -> dict:
@@ -16,7 +16,7 @@ def generate_search_query(question: str) -> dict:
     """
 
     response = bedrock_client.invoke_model(
-        modelId=model_id,
+        modelId=MODEL_ID,
         body=json.dumps(
             {
                 "message": question,
