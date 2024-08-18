@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "kendra-bedrock"
+version = "0.1.0"
+description = ""
+authors = ["KazuSh1geru <kazushi.takakusagi@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.11.9"
+boto3 = "^1.35.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.6.1"
+black = "^24.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
