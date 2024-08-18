@@ -9,7 +9,3 @@ ollama create elyza:jp8b -f Modelfile
 # モデルの実行
 ollama run elyza:jp8b
 ```
-
-
-
-
