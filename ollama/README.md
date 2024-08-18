@@ -8,7 +8,7 @@ https://qiita.com/s3kzk/items/3cebb8d306fb46cabe9f
 ollama create elyza:jp8b -f Modelfile
 # モデルの実行
 ollama run elyza:jp8b
-
+```
 
 
 
