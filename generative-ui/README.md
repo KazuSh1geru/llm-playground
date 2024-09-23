@@ -15,4 +15,5 @@ pnpm は、高速で効率的なパッケージマネージャです。npm や Y
 
 ```bash
 pnpm create next-app <your project name> --typescript
+pnpm install ai @ai-sdk/azure zod
 ```
