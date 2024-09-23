@@ -1,11 +1,11 @@
 'use server';
 
 import { createAI, getMutableAIState, streamUI } from 'ai/rsc';
-import { createAzure } from '@ai-sdk/openai';
+import { createAzure } from '@ai-sdk/azure';
 import { ReactNode } from 'react';
 import { z } from 'zod';
 import { generateId } from 'ai';
-import { Stock } from '@/components/stock';
+import { Stock } from '@/components/Stock';
 
 export interface ServerMessage {
   role: 'user' | 'assistant';
