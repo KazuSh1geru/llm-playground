@@ -1,11 +1,11 @@
 'use server';
 
-import { createAI, getMutableAIState, streamUI } from 'ai/rsc';
-import { createAzure } from '@ai-sdk/azure';
+import { getMutableAIState, streamUI } from 'ai/rsc';
+import { openai } from '@ai-sdk/openai';
 import { ReactNode } from 'react';
 import { z } from 'zod';
 import { generateId } from 'ai';
-import { Stock } from '@/components/Stock';
+import { Stock } from '@ai-studio/components/stock';
 
 export interface ServerMessage {
   role: 'user' | 'assistant';
@@ -25,13 +25,8 @@ export async function continueConversation(
 
   const history = getMutableAIState();
 
-  const azure = createAzure({
-    resourceName: <your aoai resourse name>,
-    apiKey: <your aoai key>,
-  });
-
   const result = await streamUI({
-    model: azure('gpt-4o'),
+    model: openai('gpt-3.5-turbo'),
     messages: [...history.get(), { role: 'user', content: input }],
     text: ({ content, done }) => {
       if (done) {
@@ -76,11 +71,3 @@ export async function continueConversation(
     display: result.value,
   };
 }
-
-export const AI = createAI<ServerMessage[], ClientMessage[]>({
-  actions: {
-    continueConversation,
-  },
-  initialAIState: [],
-  initialUIState: [],
-});
