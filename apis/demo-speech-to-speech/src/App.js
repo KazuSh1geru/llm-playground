@@ -4,7 +4,7 @@ import { RealtimeClient } from '@openai/realtime-api-beta';
 function App() {
   useEffect(() => {
     const client = new RealtimeClient({
-      apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+      apiKey: process.env.OPENAI_API_KEY,
       dangerouslyAllowAPIKeyInBrowser: true, // 注意: セキュリティ上のリスクがあります
     });
 
