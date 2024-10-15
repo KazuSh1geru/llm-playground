@@ -1,5 +1,6 @@
 # function calling のデモを作成する
 
+import json
 from openai import OpenAI
 
 client = OpenAI()
@@ -7,9 +8,7 @@ client = OpenAI()
 MODEL_TYPE = "gpt-4o"
 
 
-def main():
-    # ユーザーの質問を受け取る
-    user_question = input("質問を入力してください: ")
+def main(user_question: str):
 
     # 質問をOpenAIに送信する
     response = client.chat.completions.create(
@@ -58,7 +57,10 @@ def get_weather(location: str, date: str) -> str:
 
 
 if __name__ == "__main__":
-    response = main()
+    # ユーザーの質問を受け取る
+    # user_question = input("質問を入力してください: ")
+    user_question = "今日の東京の天気はどうですか？"
+    response = main(user_question)
     print(response)
     # メッセージを表示する
     print(response.choices[0].message.content)
