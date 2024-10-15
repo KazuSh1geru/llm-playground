@@ -4,6 +4,8 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 import os.path
 
+
+# TODO: 疎通確認する
 # 認証とAPIクライアントの作成
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
