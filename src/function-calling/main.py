@@ -7,19 +7,7 @@ client = OpenAI()
 
 MODEL_TYPE = "gpt-4o"
 
-
-
-
-def main(user_question: str):
-
-    # 質問をOpenAIに送信する
-    response = client.chat.completions.create(
-        model=MODEL_TYPE,
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": user_question},
-        ],
-        functions=[
+FUNCTIONS_LIST = [
             {
                 "name": "get_weather",
                 "description": "指定された場所と日付の天気を取得する",
@@ -38,7 +26,19 @@ def main(user_question: str):
                     "required": ["location", "date"],
                 },
             }
+        ]
+
+
+def main(user_question: str):
+
+    # 質問をOpenAIに送信する
+    response = client.chat.completions.create(
+        model=MODEL_TYPE,
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": user_question},
         ],
+        functions=FUNCTIONS_LIST,
         function_call="auto",
     )
     # function_call を判定する
