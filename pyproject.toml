@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "llm-playground"
+version = "0.1.0"
+description = ""
+authors = ["KazuSh1geru"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.12.2"
+openai = "^1.51.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
