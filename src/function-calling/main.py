@@ -8,25 +8,25 @@ client = OpenAI()
 MODEL_TYPE = "gpt-4o"
 
 FUNCTIONS_LIST = [
-            {
-                "name": "get_weather",
-                "description": "指定された場所と日付の天気を取得する",
-                "parameters": {
-                    "type": "object",
-                    "properties": {
-                        "location": {
-                            "type": "string",
-                            "description": "場所を指定する",
-                        },
-                        "date": {
-                            "type": "string",
-                            "description": "日付を指定する",
-                        },
-                    },
-                    "required": ["location", "date"],
+    {
+        "name": "get_weather",
+        "description": "指定された場所と日付の天気を取得する",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "string",
+                    "description": "場所を指定する",
                 },
-            }
-        ]
+                "date": {
+                    "type": "string",
+                    "description": "日付を指定する",
+                },
+            },
+            "required": ["location", "date"],
+        },
+    }
+]
 
 
 def main(user_question: str):
@@ -52,6 +52,7 @@ def main(user_question: str):
         return weather
     else:
         return response
+
 
 def get_weather(location: str, date: str) -> str:
     # 天気を取得する
