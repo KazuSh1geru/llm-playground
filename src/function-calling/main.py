@@ -8,6 +8,8 @@ client = OpenAI()
 MODEL_TYPE = "gpt-4o"
 
 
+
+
 def main(user_question: str):
 
     # 質問をOpenAIに送信する
@@ -62,5 +64,3 @@ if __name__ == "__main__":
     user_question = "今日の東京の天気はどうですか？"
     response = main(user_question)
     print(response)
-    # メッセージを表示する
-    print(response.choices[0].message.content)
