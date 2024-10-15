@@ -21,24 +21,44 @@ def main():
         functions=[
             {
                 "name": "get_weather",
-                "description": "Get the weather for a given city",
+                "description": "指定された場所と日付の天気を取得する",
                 "parameters": {
                     "type": "object",
                     "properties": {
-                        "city": {
+                        "location": {
                             "type": "string",
-                            "description": "The city to get the weather for",
+                            "description": "場所を指定する",
+                        },
+                        "date": {
+                            "type": "string",
+                            "description": "日付を指定する",
                         },
                     },
-                    "required": ["city"],
+                    "required": ["location", "date"],
                 },
             }
         ],
         function_call="auto",
     )
+    # function_call を判定する
+    function_call = response.choices[0].message.function_call
+    if function_call.name == "get_weather":
+        # 関数を呼び出す
+        args = json.loads(function_call.arguments)
+        location = args.get("location")
+        date = args.get("date")
+        weather = get_weather(location, date)
+        return weather
+    else:
+        return response
 
-    print(response)
+def get_weather(location: str, date: str) -> str:
+    # 天気を取得する
+    return f"The weather in {location} on {date} is sunny."
 
 
 if __name__ == "__main__":
-    main()
+    response = main()
+    print(response)
+    # メッセージを表示する
+    print(response.choices[0].message.content)
